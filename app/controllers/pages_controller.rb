@@ -9,10 +9,14 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
 
-    if @page.save
-      redirect_to pages_path
-    else
-      render :new
+    respond_to do |format|
+      if @page.save
+        format.html { redirect_to @page, notice:'Page was successfully created.' }
+        format.json { render :show, status: :created, location: @page }
+      else
+        format.html { render :new }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -24,23 +28,27 @@ class PagesController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def update
-    if @page.update(page_params)
-      redirect_to pages_path
-    else
-      render :edit
+    respond_to do |format|
+      if @page.update(page_params)
+        format.html { redirect_to @page, notice:'Page was successfully updated.' }
+        format.json { render :show, status: :ok, location: @page }
+      else
+        format.html { render :edit }
+        format.json { render json: @page.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    if @page.destroy
-      redirect_to pages_path
-    else
-      redirect_to pages_path, error: 'Unable to remove page'
-    end
+    @page.destroy
+      respond_to do |format|
+        format.html { redirect_to pages_url, notice:'Page was successfully destroyed.' }
+        format.json { head :no_content }
+      end
   end
 
   private
@@ -52,3 +60,4 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
   end
 end
+

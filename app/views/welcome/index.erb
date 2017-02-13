@@ -1,6 +1,6 @@
-<pre>
-<%= Cowsay.say("Hello", "Cow") %>
-</pre>
+<% for i in 0..(ENV['TIMES'] ? ENV['TIMES'].to_i : 2) do %>
+  <p>Hello World #<%= i %>!</p>
+<% end %>
 <div class="jumbotron text-center">
   <div class="container">
     <a href="/" class="lang-logo">

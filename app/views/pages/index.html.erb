@@ -1,0 +1,28 @@
+<h1>Pages</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Название</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @pages.each do |page| %>
+      <tr>
+        <td>
+          <%= page.name %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_page_path(page) %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', page_path(page), method: :delete, data: {confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to 'New Page', new_page_path %>

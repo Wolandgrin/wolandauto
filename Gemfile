@@ -5,6 +5,8 @@ ruby '2.3.3'
 gem 'rails', '5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
+#gem 'jazz_hands'
+gem 'simple_form'
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '>=	 5.0.3'
@@ -39,3 +41,7 @@ gem 'puma'
 # gem 'debugger', group: [:development, :test]
 
 gem 'cowsay'
+
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"

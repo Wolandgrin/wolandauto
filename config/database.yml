@@ -23,7 +23,15 @@ default: &default
 
 development:
   <<: *default
-  database: ruby-getting-started_development
+  adapter: postgresql
+  encoding: utf-8
+
+  #database: ruby-getting-started_development
+  database: vladimir
+  host: localhost
+  pool: 5
+  username: vladimir
+  password: sqapadcc
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -56,8 +64,8 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: ruby-getting-started_test
+  #<<: *default
+ # database: ruby-getting-started_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,7 +87,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: ruby-getting-started_production
-  username: ruby-getting-started
-  password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
+  #<<: *default
+ # database: ruby-getting-started_production
+ # username: ruby-getting-started
+  #password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>

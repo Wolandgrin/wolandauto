@@ -87,7 +87,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  #<<: *default
- # database: stock_calculator_production
- # username: vladimir
- # password: <%= ENV['STOCK_CALCULATOR_DATABASE_PASSWORD'] %>
+  <<: *default
+  database: vladimir
+  host: localhost
+  pool: 5
+  username: vladimir
+  password: sqapadcc

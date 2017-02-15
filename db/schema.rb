@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20170215094713) do
   enable_extension "plpgsql"
   enable_extension "adminpack"
 
+  create_table "item_users", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "client_id"
+    t.integer  "userid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_item_users_on_client_id", using: :btree
+    t.index ["item_id"], name: "index_item_users_on_item_id", using: :btree
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
@@ -24,6 +34,13 @@ ActiveRecord::Schema.define(version: 20170215094713) do
     t.integer  "userid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "name",        default: "", null: false
+    t.string   "description", default: "", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|

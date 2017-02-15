@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :items
+#  resources :items
   resources :users
-
+  resources :sessions,   only: [:new, :create, :destroy]
+  resources :items, only: [:create, :edit, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

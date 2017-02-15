@@ -89,7 +89,7 @@ test:
 production:
   <<: *default
   database: vladimir
-  host: localhost
+  host: data.heroku.com
   pool: 5
   username: vladimir
   password: sqapadcc

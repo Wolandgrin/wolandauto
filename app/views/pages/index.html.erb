@@ -11,16 +11,13 @@
   <% @pages.each do |page| %>
       <tr>
         <td>
-          <%= page.name %>
-        </td>
-        <td>
-          <%= link_to 'Show', page %>
+          <%= link_to page.name, page %>
         </td>
         <td>
           <%= link_to 'Edit', edit_page_path(page) %>
         </td>
         <td>
-          <%= link_to 'Destroy', page_path(page), method: :delete, data: {confirm: 'Are you sure?'} %>
+          <%= link_to 'Remove item', page_path(page), method: :delete, data: {confirm: 'Are you sure?'} %>
         </td>
       </tr>
       <% end %>
@@ -28,4 +25,4 @@
 
 </table>
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'New Item', new_page_path %>

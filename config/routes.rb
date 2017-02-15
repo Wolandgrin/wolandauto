@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :items
+  get 'sessions/new'
+
+  resources :users
   resources :widgets
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,9 +12,15 @@ Rails.application.routes.draw do
 
   root 'static_pages#welcome'
 
-  get 'about_us', to: 'static_pages#about_us'
+  get  '/signup',  to: 'users#new'
+  get  '/add',  to: 'items#new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
 
+  resources :items
   resources :pages
+  resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

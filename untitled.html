@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %> | Stock productivity calculator App</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all',
+                             'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+  </script>
+  <![endif]-->
+</head>
+<body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Stock calculator", '#', id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",   '#' %></li>
+        <li><%= link_to "Log in", '#' %></li>
+        <li><%= link_to "Register", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
+</html>
+  
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
+    <div class="col-lg-3">
+      <div class="well sidebar-nav">
+        <h3>Sidebar</h3>
+        <ul class="nav nav-list">
+          <li class="nav-header"><%= link_to 'Pages', pages_path %> </li>
+          <% @pages.each do |page| %>
+              <li><%= link_to page.name, page_path(page) %></li>
+          <% end %>
+        </ul>
+      </div><!--/.well -->
+    </div><!--/span-->
+  </div><!--/row-->
+
+  <footer class="footer">
+    <p>&copy; Woland Stocks 2017</p>
+  </footer>
+
+</div> <!-- /container -->
+
+</div> <!-- /container -->

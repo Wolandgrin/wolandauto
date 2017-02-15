@@ -1,8 +1,8 @@
 {
-  "name": "Start on Heroku: Ruby",
-  "description": "A barebones Rails app, which can easily be deployed to Heroku",
+  "name": "Home project for Autobahn",
+  "description": "Rails app, created according to spec",
   "image": "heroku/ruby",
-  "repository": "https://github.com/heroku/ruby-getting-started",
+  "repository": "https://git.heroku.com/wolandauto.git",
   "keywords": ["ruby", "rails" ],
   "addons": [ "heroku-postgresql" ]
 }

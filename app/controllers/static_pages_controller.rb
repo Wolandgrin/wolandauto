@@ -1,11 +1,9 @@
 class StaticPagesController < ApplicationController
 
   def welcome
-    @title = 'Welcome ))'
-  end
+    @title = 'Welcome to the Stock productivity calculator sample app'
 
-  def about_us
-    @title='коротко о главном'
+    @description = 'Please sign in or sign up to continue'
   end
 end
 

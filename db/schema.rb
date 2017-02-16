@@ -10,42 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215094713) do
+ActiveRecord::Schema.define(version: 20170215083644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "adminpack"
-
-  create_table "item_users", force: :cascade do |t|
-    t.integer  "item_id"
-    t.integer  "client_id"
-    t.integer  "userid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_item_users_on_client_id", using: :btree
-    t.index ["item_id"], name: "index_item_users_on_item_id", using: :btree
-  end
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
     t.float    "interest"
     t.integer  "duration"
-    t.integer  "userid"
+    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "pages", force: :cascade do |t|
-    t.string   "name",        default: "", null: false
-    t.string   "description", default: "", null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.index ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+    t.index ["users_id"], name: "index_items_on_users_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "password"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
@@ -54,10 +41,13 @@ ActiveRecord::Schema.define(version: 20170215094713) do
 
   create_table "widgets", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
+    t.float    "price"
+    t.float    "interest"
+    t.integer  "duration"
     t.integer  "stock"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_foreign_key "items", "users", column: "users_id"
 end

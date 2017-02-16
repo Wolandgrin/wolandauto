@@ -88,8 +88,8 @@ test:
 #
 production:
   <<: *default
- database: vladimir
-  host: localhost
-  pool: 15
-  username: vladimir
-  password: sqapadcc
+# database: vladimir
+#  host: localhost
+#  pool: 15
+#  username: vladimir
+#  password: sqapadcc

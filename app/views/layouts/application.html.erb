@@ -69,11 +69,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-10">
+    <div class="span9">
       <%= bootstrap_flash %>
       <%= yield %>
     </div>
-
+    <div class="span3">
+      <%= yield %>
+</div>
   </div><!--/row-->
 
   <footer class="footer">

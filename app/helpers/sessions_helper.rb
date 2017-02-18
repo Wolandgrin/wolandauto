@@ -15,6 +15,26 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  # Returns the current logged-in user (if any).
+  def current_user=(user)
+    user = current_user
+    #@current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def destroy
+    log_out if logged_in?
+    redirect_to root_path
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
   # Logs out the current user.
   def log_out
     session.delete(:user_id)

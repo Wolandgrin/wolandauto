@@ -47,3 +47,6 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'fusioncharts-rails'
+gem 'bootstrap-sass', '3.2.0'
+gem 'chartkick'

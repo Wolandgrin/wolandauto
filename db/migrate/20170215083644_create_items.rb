@@ -2,8 +2,8 @@ class CreateItems < ActiveRecord::Migration[5.0]
   def change
     create_table :items do |t|
       t.string :name
-      t.float :price
-      t.float :interest
+      t.decimal :price
+      t.decimal :interest
       t.integer :duration
       #t.integer :user_id
       t.references :users, foreign_key: true

@@ -1,44 +1,54 @@
-<table width=100% border="0" align="center" 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="row">
+        <div class="col-xs-6">
+<table width=100% border="1" align="center" 
      cellpadding="4" cellspacing="0">
-<col width="230">
-<col width="30">
-<col width="30">
-<tr> 
-     <td rowspan="4">placeholder for bar graph</td>
      <td>
-     <h3>Name:</h3>
+     	<h3>Name:</h3>
      </td>
      <td>
-      <h3><%= @item.name %></h3>
-      </td>
+		<h3><%= @item.name %></h3>
+     </td>
     </tr>
     <tr> 
      <td>
-     <h3>Price: </h3>
+     	<h3>Price: </h3>
      </td>
      <td>
-     <h3><%= @item.price %></h3>
-     </td>
-    </tr>    
-    <tr> 
-     <td>
-     <h3>Interest: </h3>
-     </td>
-     <td>
-      <h3><%= @item.interest %></h3>
+		<h3><%= @item.price %></h3>
      </td>
     </tr>    
     <tr> 
      <td>
-     <h3>Duration: </h3>
+		<h3>Interest: </h3>
      </td>
      <td>
-      <h3><%= @item.duration %></h3>
+		<h3><%= @item.interest %></h3>
+     </td>
+    </tr>    
+    <tr> 
+     <td>
+		<h3>Duration: </h3>
+     </td>
+     <td>
+		<h3><%= @item.duration %></h3>
      </td>
     </tr>
 
 
 </table>
+
+        </div>
+        <div class="col-xs-6">
+<%= column_chart Order.group_by_day_of_week(:created_at, format: "%a").count %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= link_to 'Edit stock item', edit_item_path(@item) %> |
 <%= link_to 'Remove stock item', @item, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', items_path %>

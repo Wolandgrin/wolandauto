@@ -17,11 +17,19 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-
+resources :dashboard
 #  resources :items
   resources :users
   resources :sessions,   only: [:new, :create, :destroy]
   resources :items, only: [:create, :edit, :destroy]
+
+#   resources :charts, only: [] do
+#   collection do
+#     get 'intress_by_years'
+#   end
+# end
+resources :charts
+resources :statistics
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

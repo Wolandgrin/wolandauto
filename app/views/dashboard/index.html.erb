@@ -1,0 +1,14 @@
+<!-- Filename: app/views/dashboard/index.html.erb -->
+
+<%= debug @dashboard %>
+<h3>My Chart</h3>
+<script type="text/javascript">
+FusionCharts['debugger'].outputTo(function (id, sender,
+    eventName, eventArgs) {
+    console.log(id + ': 'eventName + ' from ' + sender,
+    eventArgs);
+});
+FusionCharts['debugger'].outputFormat('verbose');
+FusionCharts['debugger'].enable(true);
+ <div id="chart-container"><%= @chart.render() %></div>	
+</script>

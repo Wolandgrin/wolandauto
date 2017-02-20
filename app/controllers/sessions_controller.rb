@@ -11,7 +11,7 @@
           log_in user #format.html { , notice: 'Welcome back' } # + @name
           #params[:session][:remember_me] == '1' ? remember(user) : forget(user)
           #redirect_back_or user
-          redirect_to items_path
+          redirect_to current_user
         else
           flash.now[:danger] = 'Invalid email/password combination'
           render 'new'

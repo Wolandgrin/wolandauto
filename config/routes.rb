@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
 #  resources :items
-  resources :users
+  resources :users do
+    resources :items
+  end
+
   resources :sessions,   only: [:new, :create, :destroy]
   resources :items, only: [:create, :edit, :destroy]
   # Example of regular route:

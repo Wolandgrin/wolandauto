@@ -12,8 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    #items = @user.items.paginate(page: params[:page])
-
+    @items = @user.items.paginate(page: params[:page])
       #Item.where("user_id = ?", id)
   end
 
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         log_in @user
-        format.html { redirect_to items_path, notice: 'User account was successfully created' }
+        format.html { redirect_to current_user, notice: 'User account was successfully created' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

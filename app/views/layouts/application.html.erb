@@ -47,11 +47,11 @@
     </button>
 
         <% if logged_in? %>
-        <%= link_to "Stock productivity calculator", items_path, class:"navbar-brand" %>
+        <%= link_to "Stock productivity calculator", current_user, class:"navbar-brand" %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Add stock", add_path %></li>
-              <li><%= link_to "User profile", current_user %></li>
+              <li><%= link_to "User profile", edit_user_path(@current_user) %></li>
             <li><%= link_to "Logout", logout_path, method: "delete" %></li>
           </ul>
         </div>

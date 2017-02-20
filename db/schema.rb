@@ -10,23 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215083644) do
+ActiveRecord::Schema.define(version: 20170219221712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.float    "price"
-    t.float    "interest"
+    t.decimal  "price"
+    t.decimal  "interest"
     t.integer  "duration"
-    t.integer  "users_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_items_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
-    t.index ["users_id"], name: "index_items_on_users_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,5 +47,5 @@ ActiveRecord::Schema.define(version: 20170215083644) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "items", "users", column: "users_id"
+  add_foreign_key "users"
 end

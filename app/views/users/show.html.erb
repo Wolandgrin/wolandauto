@@ -12,7 +12,6 @@
   </thead>
 
   <tbody>
-    
     <% @items.each do |item| %>
       <tr>
       <% if @user.items.any? %>
@@ -27,7 +26,6 @@
         <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <%= will_paginate @items %>
-
     <% end %>
   </tbody>
 </table>

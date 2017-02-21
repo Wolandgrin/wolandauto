@@ -1,14 +1,22 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, :logged_in_user, only: [:show, :edit, :update, :destroy]
+  include SessionsHelper
 
   # GET /items
   # GET /items.json
   def index
-      end
+  
+  end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    if @item.user_id == current_user.id
+      @item = current_user.items.find(params[:id])
+    else
+      flash[:danger] = "Invalid request. Probably you are not authorized to view this page"
+      redirect_to current_user
+    end
   end
 
   # GET /items/new
@@ -18,6 +26,12 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    if @item.user_id == current_user.id
+    @item = current_user.items.find(params[:id])
+    else
+      flash[:danger] = "Invalid request. Probably you are not authorized to view this page"
+      redirect_to current_user
+    end
   end
 
   # POST /items

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
-  #before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :current_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -11,9 +11,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    @items = @user.items.paginate(page: params[:page])
-      #Item.where("user_id = ?", id)
+    if current_user == @user
+      @items = @user.items.paginate(page: params[:page])
+    else
+      flash[:danger] = "Invalid request. Probably you are not authorized to view this page"
+      redirect_to current_user
+    end
   end
 
   # GET /users/new
@@ -23,6 +26,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if current_user == @user
+      @items = @user.items.paginate(page: params[:page])
+    else
+      flash[:danger] = "Invalid request. Probably you are not authorized to view this page"
+      redirect_to current_user
+    end
   end
 
   # POST /users
@@ -66,10 +75,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+        @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

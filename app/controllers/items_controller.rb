@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
     respond_to do |format|
       if @item.save
-        format.html { redirect_to current_user, notice: 'Item was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Stock item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to current_user, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item, notice: 'Stock item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -69,10 +69,12 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Item was successfully deleted.' }
+      format.html { redirect_to current_user, notice: 'Stock item was successfully deleted.' }
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

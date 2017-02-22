@@ -49,3 +49,7 @@ gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'faker'
 gem 'pry-rails', group: [:development, :test]
+gem 'chartkick'
+gem 'groupdate'
+gem 'hightop'
+gem 'bootstrap-sass'
